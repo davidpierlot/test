@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#4CAF50">
+    <title>Grocery List App</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="images/icons/icon-192x192.png">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Grocery List</h1>
+        </header>
+        
+        <main>
+            <div id="home-screen" class="screen active">
+                <div class="menu-container">
+                    <div class="menu-item" id="create-list-btn">
+                        <div class="menu-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg>
+                        </div>
+                        <div class="menu-text">Create New List</div>
+                    </div>
+                    
+                    <div class="menu-item" id="my-lists-btn">
+                        <div class="menu-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="8" y1="6" x2="21" y2="6"></line>
+                                <line x1="8" y1="12" x2="21" y2="12"></line>
+                                <line x1="8" y1="18" x2="21" y2="18"></line>
+                                <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                                <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                                <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                            </svg>
+                        </div>
+                        <div class="menu-text">My Lists</div>
+                    </div>
+                    
+                    <div class="menu-item" id="categories-btn">
+                        <div class="menu-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="3" width="7" height="7"></rect>
+                                <rect x="14" y="3" width="7" height="7"></rect>
+                                <rect x="14" y="14" width="7" height="7"></rect>
+                                <rect x="3" y="14" width="7" height="7"></rect>
+                            </svg>
+                        </div>
+                        <div class="menu-text">My Categories</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="create-list-screen" class="screen">
+                <div class="category-selection">
+                    <h2>Vegetables</h2>
+                    <div class="gallery-container" id="vegetables-gallery">
+                        <!-- Gallery items will be dynamically added here -->
+                    </div>
+                    <div class="action-buttons">
+                        <button id="save-list-btn" class="primary-btn">Save List</button>
+                        <button id="cancel-list-btn" class="secondary-btn">Cancel</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="save-list-dialog" class="dialog">
+                <div class="dialog-content">
+                    <h2>Save Your List</h2>
+                    <div class="form-group">
+                        <label for="list-name">List Name:</label>
+                        <input type="text" id="list-name" placeholder="e.g., Weekly Shopping">
+                    </div>
+                    <div class="form-group">
+                        <label for="list-date">Date:</label>
+                        <input type="date" id="list-date">
+                    </div>
+                    <div class="dialog-buttons">
+                        <button id="confirm-save-btn" class="primary-btn">Save</button>
+                        <button id="cancel-save-btn" class="secondary-btn">Cancel</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="my-lists-screen" class="screen">
+                <h2>My Shopping Lists</h2>
+                <div class="sort-options">
+                    <button id="sort-by-date" class="sort-btn active">Sort by Date</button>
+                    <button id="sort-by-category" class="sort-btn">Sort by Category</button>
+                </div>
+                <div id="lists-container" class="lists-container">
+                    <!-- Lists will be dynamically added here -->
+                </div>
+            </div>
+            
+            <div id="list-detail-screen" class="screen">
+                <h2 id="list-detail-title">List Details</h2>
+                <div class="list-date" id="list-detail-date"></div>
+                <div class="gallery-container" id="list-detail-items">
+                    <!-- Selected items will be dynamically added here -->
+                </div>
+                <div class="action-buttons">
+                    <button id="edit-list-btn" class="primary-btn">Edit List</button>
+                    <button id="back-to-lists-btn" class="secondary-btn">Back to Lists</button>
+                </div>
+            </div>
+            
+            <div id="categories-screen" class="screen">
+                <h2>Categories</h2>
+                <div class="categories-container">
+                    <div class="category-card" id="vegetables-category">
+                        <div class="category-image">
+                            <img src="images/vegetables-category.jpg" alt="Vegetables">
+                        </div>
+                        <div class="category-name">Vegetables</div>
+                    </div>
+                    <div class="category-card add-category" id="add-category-btn">
+                        <div class="add-icon">+</div>
+                        <div class="category-name">Add Category</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="category-detail-screen" class="screen">
+                <h2 id="category-detail-title">Vegetables</h2>
+                <div class="gallery-container" id="category-items">
+                    <!-- Category items will be dynamically added here -->
+                </div>
+                <div class="action-buttons">
+                    <button id="add-product-btn" class="primary-btn">Add Product</button>
+                    <button id="back-to-categories-btn" class="secondary-btn">Back</button>
+                </div>
+            </div>
+            
+            <div id="add-product-dialog" class="dialog">
+                <div class="dialog-content">
+                    <h2>Add New Product</h2>
+                    <div class="form-group">
+                        <label for="product-name">Product Name:</label>
+                        <input type="text" id="product-name" placeholder="e.g., Broccoli">
+                    </div>
+                    <div class="form-group">
+                        <label for="product-image">Product Image:</label>
+                        <input type="file" id="product-image" accept="image/*">
+                        <div class="image-preview" id="image-preview"></div>
+                    </div>
+                    <div class="dialog-buttons">
+                        <button id="confirm-add-product-btn" class="primary-btn">Add Product</button>
+                        <button id="cancel-add-product-btn" class="secondary-btn">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <div class="nav-button" id="home-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+                <span>Home</span>
+            </div>
+        </footer>
+    </div>
+    
+    <script src="js/app.js"></script>
+    <script src="js/database.js"></script>
+    <script>
+        // Register service worker for PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('service-worker.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(error => {
+                        console.log('ServiceWorker registration failed: ', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
